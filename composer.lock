@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b5d8dd89fe9dd82d6ec5072e5cd8ae9",
+    "content-hash": "82c0ae046a90ba5ee24e86ac64140617",
     "packages": [
         {
             "name": "brick/math",
@@ -504,16 +504,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.69.0",
+            "version": "v8.70.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "545181da688db64fed6d8427e55f630a90ca0d32"
+                "reference": "f4b69fac9292df1a8afd5eb93e77990444ad5077"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/545181da688db64fed6d8427e55f630a90ca0d32",
-                "reference": "545181da688db64fed6d8427e55f630a90ca0d32",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f4b69fac9292df1a8afd5eb93e77990444ad5077",
+                "reference": "f4b69fac9292df1a8afd5eb93e77990444ad5077",
                 "shasum": ""
             },
             "require": {
@@ -672,7 +672,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-11-02T13:53:22+00:00"
+            "time": "2021-11-09T16:50:33+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -7093,16 +7093,16 @@
         },
         {
             "name": "spatie/backtrace",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/backtrace.git",
-                "reference": "9b4df807fb65aaa8006dcd7a7ccdef8fb4bb002e"
+                "reference": "4ee7d41aa5268107906ea8a4d9ceccde136dbd5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/backtrace/zipball/9b4df807fb65aaa8006dcd7a7ccdef8fb4bb002e",
-                "reference": "9b4df807fb65aaa8006dcd7a7ccdef8fb4bb002e",
+                "url": "https://api.github.com/repos/spatie/backtrace/zipball/4ee7d41aa5268107906ea8a4d9ceccde136dbd5b",
+                "reference": "4ee7d41aa5268107906ea8a4d9ceccde136dbd5b",
                 "shasum": ""
             },
             "require": {
@@ -7139,7 +7139,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/backtrace/issues",
-                "source": "https://github.com/spatie/backtrace/tree/1.2.0"
+                "source": "https://github.com/spatie/backtrace/tree/1.2.1"
             },
             "funding": [
                 {
@@ -7151,7 +7151,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-05-19T12:49:10+00:00"
+            "time": "2021-11-09T10:57:15+00:00"
         },
         {
             "name": "spatie/laravel-ray",
@@ -7549,16 +7549,16 @@
         },
         {
             "name": "zbateson/mail-mime-parser",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/mail-mime-parser.git",
-                "reference": "da7b5913052d7b84fe789608761c4915281d0801"
+                "reference": "0ef2d7de2577ea0a339d34720451c8ba8cd9dbb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/da7b5913052d7b84fe789608761c4915281d0801",
-                "reference": "da7b5913052d7b84fe789608761c4915281d0801",
+                "url": "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/0ef2d7de2577ea0a339d34720451c8ba8cd9dbb4",
+                "reference": "0ef2d7de2577ea0a339d34720451c8ba8cd9dbb4",
                 "shasum": ""
             },
             "require": {
@@ -7618,20 +7618,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-23T02:13:55+00:00"
+            "time": "2021-11-09T18:24:41+00:00"
         },
         {
             "name": "zbateson/mb-wrapper",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/mb-wrapper.git",
-                "reference": "721b3dfbf7ab75fee5ac60a542d7923ffe59ef6d"
+                "reference": "547d73a04912728cf0bb772d43e5a17e63cdf168"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/mb-wrapper/zipball/721b3dfbf7ab75fee5ac60a542d7923ffe59ef6d",
-                "reference": "721b3dfbf7ab75fee5ac60a542d7923ffe59ef6d",
+                "url": "https://api.github.com/repos/zbateson/mb-wrapper/zipball/547d73a04912728cf0bb772d43e5a17e63cdf168",
+                "reference": "547d73a04912728cf0bb772d43e5a17e63cdf168",
                 "shasum": ""
             },
             "require": {
@@ -7640,7 +7640,7 @@
                 "symfony/polyfill-mbstring": "^1.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5"
+                "sanmai/phpunit-legacy-adapter": "^6.3 || ^8"
             },
             "suggest": {
                 "ext-iconv": "For best support/performance",
@@ -7677,7 +7677,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zbateson/mb-wrapper/issues",
-                "source": "https://github.com/zbateson/mb-wrapper/tree/1.0.1"
+                "source": "https://github.com/zbateson/mb-wrapper/tree/1.1.0"
             },
             "funding": [
                 {
@@ -7685,7 +7685,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-21T22:14:27+00:00"
+            "time": "2021-11-09T18:05:07+00:00"
         },
         {
             "name": "zbateson/stream-decorators",
@@ -7754,7 +7754,9 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^7.3|^8.0"
+    },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
 }

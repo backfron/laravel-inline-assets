@@ -20,11 +20,13 @@ class LaravelInlineAssetsServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
 
-        Blade::directive('inlineAsset', fn ($expression)
-            => (new LaravelInlineAssets($expression, 'asset'))->render());
+        Blade::directive('inlineAsset', function ($expression) {
+            return (new LaravelInlineAssets($expression, 'asset'))->render();
+        });
 
-        Blade::directive('inlineMix', fn ($expression)
-            => (new LaravelInlineAssets($expression, 'mix'))->render());
+        Blade::directive('inlineMix', function ($expression) {
+            return (new LaravelInlineAssets($expression, 'mix'))->render();
+        });
     }
 
     /**
