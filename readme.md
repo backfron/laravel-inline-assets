@@ -11,7 +11,7 @@ $ composer require backfron/laravel-inline-assets
 ```
 
 ## Usage
-Simply replace the use of ´´´asset()´´´ and ´´´mix()´´´ helpers in your blade files for the directives that this package provides.
+Simply replace the use of ```asset()``` and ```mix()``` helpers in your blade files for the directives that this package provides.
 
 ```php
 // Instead of this
