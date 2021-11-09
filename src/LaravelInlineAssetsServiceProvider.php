@@ -20,34 +20,7 @@ class LaravelInlineAssetsServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
 
-        Blade::directive('inlineAsset', function ($expression) {
-            $filePath = str_replace(['\'', '"'], '', $expression);
-            $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-            if (in_array(config('app.env'), config('laravel-inline-assets.inline'))) {
-                $inlineContent = addslashes(File::get(public_path($filePath)));
-
-                if ($extension == 'css') {
-                    return "<?php echo '<style>{$inlineContent}</style>'; ?>";
-                }
-
-                if ($extension == 'js') {
-                    return "<?php echo '<script>{$inlineContent}</script>'; ?>";
-                }
-            }
-
-            if (!in_array(config('app.env'), config('laravel-inline-assets.inline'))) {
-
-                if ($extension == 'css') {
-                    return "<?php echo '<link rel=\"stylesheet\" href=\"" . asset($filePath) ."\">'; ?>";
-                }
-
-                if ($extension == 'js') {
-                    return "<?php echo '<script src=\"" . asset($filePath) . "\"></script>'; ?>";
-                }
-            }
-
-
-        });
+        Blade::directive('inlineAsset', fn ($expression) => (new LaravelInlineAssets($expression))->build());
 
         Blade::directive('inlineMix', function ($expression) {
             $filePath = str_replace(['\'', '"'], '', $expression);
