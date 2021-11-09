@@ -20,37 +20,11 @@ class LaravelInlineAssetsServiceProvider extends ServiceProvider
             $this->bootForConsole();
         }
 
-        Blade::directive('inlineAsset', fn ($expression) => (new LaravelInlineAssets($expression))->build());
+        Blade::directive('inlineAsset', fn ($expression)
+            => (new LaravelInlineAssets($expression, 'asset'))->render());
 
-        Blade::directive('inlineMix', function ($expression) {
-            $filePath = str_replace(['\'', '"'], '', $expression);
-            $extension = pathinfo($filePath, PATHINFO_EXTENSION);
-
-            if (in_array(config('app.env'), config('laravel-inline-assets.inline'))) {
-                $inlineContent = addslashes(File::get(public_path($filePath)));
-
-                if ($extension == 'css') {
-                    return "<?php echo '<style>{$inlineContent}</style>'; ?>";
-                }
-
-                if ($extension == 'js') {
-                    return "<?php echo '<script>{$inlineContent}</script>'; ?>";
-                }
-            }
-
-            if (!in_array(config('app.env'), config('laravel-inline-assets.inline'))) {
-
-                $filePath = mix($filePath);
-
-                if ($extension == 'css') {
-                    return "<?php echo '<link rel=\"stylesheet\" href=\"" . $filePath . "\">'; ?>";
-                }
-
-                if ($extension == 'js') {
-                    return "<?php echo '<script src=\"" . $filePath . "\"></script>'; ?>";
-                }
-            }
-        });
+        Blade::directive('inlineMix', fn ($expression)
+            => (new LaravelInlineAssets($expression, 'mix'))->render());
     }
 
     /**
@@ -61,11 +35,6 @@ class LaravelInlineAssetsServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../config/laravel-inline-assets.php', 'laravel-inline-assets');
-
-        // Register the service the package provides.
-        $this->app->singleton('laravel-inline-assets', function ($app) {
-            return new LaravelInlineAssets;
-        });
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace Backfron\LaravelInlineAssets;
 
-use Illuminate\Support\Facades\File;
 
 class LaravelInlineAssets
 {
@@ -12,58 +11,79 @@ class LaravelInlineAssets
 
     protected $expression;
 
-    public function __construct($expression)
+    protected $mode;
+
+    public function __construct($expression, $mode)
     {
         $this->expression = $expression;
+        $this->mode = $mode;
         $this->prepareProperties();
     }
 
-    public function build()
+    /**
+     * @return string
+     */
+    public function render()
     {
-        if ($this->shouldRender()) {
-
-            return $this->buildInlineContent();
+        if ($this->extension == 'css') {
+            return $this->buildStyleTag($this->filePath);
         }
 
-        if (!$this->shouldRender()) {
-
-            return $this->buildTag();
+        if ($this->extension == 'js') {
+            return $this->buildScriptTag($this->filePath);
         }
 
     }
 
+    /**
+     * @return void
+     */
     protected function prepareProperties()
     {
         $this->filePath = str_replace(['\'', '"'], '', $this->expression);
         $this->extension = pathinfo($this->filePath, PATHINFO_EXTENSION);
     }
 
-    protected function shouldRender()
+    /**
+     * @return boolean
+     */
+    public static function shouldRender()
     {
         return in_array(config('app.env'), config('laravel-inline-assets.inline'));
     }
 
-    protected function buildInlineContent()
+    protected function buildStyleTag($path)
     {
-        $inlineContent = addslashes(File::get(public_path($this->filePath)));
-
-        if ($this->extension == 'css') {
-            return "<?php echo '<style>{$inlineContent}</style>'; ?>";
+        return "
+        <?php
+        if(!\Backfron\LaravelInlineAssets\LaravelInlineAssets::shouldRender()) {
+            echo '<link rel=\"stylesheet\" href=\"' . ('{$this->mode}' == 'asset' ? asset('{$path}') : mix('{$path}')) . '\">';
         }
 
-        if ($this->extension == 'js') {
-            return "<?php echo '<script>{$inlineContent}</script>'; ?>";
+        if(\Backfron\LaravelInlineAssets\LaravelInlineAssets::shouldRender()) {
+            echo '<style>' . stripslashes(\Illuminate\Support\Facades\File::get(public_path('$path'))) . '</style>';
         }
+        ?>
+        ";
+
     }
 
-    protected function buildTag()
+    /**
+     * @param string $path
+     * @return string
+     */
+    protected function buildScriptTag($path)
     {
-        if ($this->extension == 'css') {
-            return "<?php echo '<link rel=\"stylesheet\" href=\"" . asset($this->filePath) . "\">'; ?>";
+        return "
+        <?php
+        if(!\Backfron\LaravelInlineAssets\LaravelInlineAssets::shouldRender()) {
+            echo '<script src=\"' . ('{$this->mode}' == 'asset' ? asset('{$path}') : mix('{$path}')) . '\"></script>';
         }
 
-        if ($this->extension == 'js') {
-            return "<?php echo '<script src=\"" . asset($this->filePath) . "\"></script>'; ?>";
+        if(\Backfron\LaravelInlineAssets\LaravelInlineAssets::shouldRender()) {
+            echo '<script>' . stripslashes(\Illuminate\Support\Facades\File::get(public_path('$path'))) . '</script>';
         }
+        ?>
+        ";
     }
 }
