@@ -61,7 +61,7 @@ class LaravelInlineAssets
         }
 
         if(\Backfron\LaravelInlineAssets\LaravelInlineAssets::shouldRender()) {
-            echo '<style>' . stripslashes(\Illuminate\Support\Facades\File::get(public_path('$path'))) . '</style>';
+            echo '<style>' . \Illuminate\Support\Facades\File::get(public_path('$path')) . '</style>';
         }
         ?>
         ";
@@ -81,7 +81,7 @@ class LaravelInlineAssets
         }
 
         if(\Backfron\LaravelInlineAssets\LaravelInlineAssets::shouldRender()) {
-            echo '<script>' . stripslashes(\Illuminate\Support\Facades\File::get(public_path('$path'))) . '</script>';
+            echo '<script>' . \Illuminate\Support\Facades\File::get(public_path('$path')) . '</script>';
         }
         ?>
         ";
